@@ -2,14 +2,11 @@ workflows:
   native-android-build:
     name: Android Native Online Build
     max_build_duration: 30
-    instance_type: mac_mini_m2 # High-speed building hardware
-    environment:
-      android_sdk: latest
-      ndk: latest
+    instance_type: mac_mini_m2
     scripts:
       - name: Set up Gradlew Permissions
         script: chmod +x gradlew
       - name: Build Android Debug APK
         script: ./gradlew assembleDebug
     artifacts:
-      - app/build/outputs/apk/debug/*.apk # Tells Codemagic to give you the file
+      - app/build/outputs/apk/debug/*.apk
